@@ -32,15 +32,21 @@ struct TwoSat {
 		return N++;
 	}
 
-	void either(int f, int j) {
+	void either(int f, int j) { // OR
 		f = max(2*f, -1-2*f);
 		j = max(2*j, -1-2*j);
 		gr[f].push_back(j^1);
 		gr[j].push_back(f^1);
 	}
-	void setValue(int x) { either(x, x); }
+	void setValue(int x) { either(x, x); } 
+    void both(int f, int j) { setValue(f); setValue(j); } // AND
+    void notBoth(int f, int j) { either(~f, ~j); } // NAND
+    void neither(int f, int j) { setValue(~f); setValue(~j); } // NOR
+    void setOnlyOne(int f, int j) { either(f, j); either(~f, ~j); } // XOR
+    void bothAreSame(int f, int j) { either(~f, j); either(f, ~j); } // XNOR
 
-	void atMostOne(const vi& li) { // (optional)
+
+	void atMostOne(const vi& li) { // NAND more than 2 variables (optional) 
 		if (sz(li) <= 1) return;
 		int cur = ~li[0];
 		rep(i,2,sz(li)) {
