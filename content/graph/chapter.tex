@@ -59,3 +59,13 @@
 		% Test: stress-tests/graph/erdos-gallai.cpp
 		A simple graph with node degrees $d_1 \ge \dots \ge d_n$ exists iff $d_1 + \dots + d_n$ is even and for every $k = 1\dots n$,
 		\[ \sum _{i=1}^{k}d_{i}\leq k(k-1)+\sum _{i=k+1}^{n}\min(d_{i},k). \]
+
+	\subsection{Hammer-Simeone Theorem}
+		A graph is \textbf{split} (vertices can be partitioned into a clique and an independent set) iff its degree sequence $d_1 \ge d_2 \ge \dots \ge d_n$ satisfies:
+		\[ \sum_{i=1}^m d_i = m(m-1) + \sum_{i=m+1}^n d_i \]
+		where $m$ is the largest $i$ such that $d_i \ge i-1$.
+		\begin{itemize}
+			\item The first $m$ vertices form the clique (in some realization).
+			\item Complexity: $O(N \log N)$ to sort, $O(N)$ to check.
+			\item Useful for problems involving chordal graphs (split $\subset$ chordal).
+		\end{itemize}
