@@ -28,7 +28,7 @@ struct Node {
 		}
 		else val = v[lo];
 	}
-	int query(int L, int R) {
+	int query(int L, int R) { // range [L, R)
 		if (R <= lo || hi <= L) return -inf;
 		if (L <= lo && hi <= R) return val;
 		push();

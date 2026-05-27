@@ -8,10 +8,16 @@
  * \texttt{sa[i]} is the starting index (0-based) of the suffix which
  * is $i$'th in the sorted suffix array.
  * The returned vector is of size $n+1$, and \texttt{sa[0] = n}.
+ * \texttt{rank[i]} is the rank (1-based) of the ith suffix (0-based) in the initial string.
+ * \texttt{rank[i]} is of size $n+1$, and \texttt{rank[n] = 0}.
  * The \texttt{lcp} array contains longest common prefixes for
  * neighbouring strings in the suffix array:
  * \texttt{lcp[i] = lcp(sa[i], sa[i-1])}, \texttt{lcp[0] = 0}.
  * The input string must not contain any nul chars.
+ * In sa[i] and lcp[i], the index i is relative to sorted suffixes.
+ * sa[i] and lcp[i] ask: "Tell me about the suffix that ended up at position i after sorting."
+ * In rank[i], the index i is relative to the initial string.
+ * rank[i] asks: "Where did the suffix starting at index i in the original string end up after sorting?"
  * Time: $O(n \log n)$
  * Status: stress-tested
  */

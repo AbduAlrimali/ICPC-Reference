@@ -11,6 +11,7 @@
 #pragma once
 
 #include "ModMulLL.h"
+#include "ModPow.h"
 
 bool isPrime(ull n) {
 	if (n < 2 || n % 6 % 4 != 1) return (n | 1) == 3;

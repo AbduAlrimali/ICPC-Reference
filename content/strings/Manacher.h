@@ -4,6 +4,7 @@
  * Description: For each position in a string, 
  * p[1][i] = (max  odd  length  palindrome  centered  at  i)  /  2  [floor  division], 
  * p[0][i] = same  for  even,  it  considers  the  right  center.
+ * iterate over p[1][i] and p[0][i] to find the longest palindromic substring.
  * Time: O(N)
  * Status: Stress-tested
  */
@@ -24,7 +25,7 @@ struct Manacher {
 				if (R > r) l = L, r = R;
 			}
 	}
-	bool is_palindrome(int l,  int r) {
+	bool is_palindrome(int l,  int r) { // [l, r] inclusive
 		int mid = (l + r + 1) / 2, len = r - l + 1;
 		return 2 * p[len % 2][mid] + len % 2 >= len;
 	}

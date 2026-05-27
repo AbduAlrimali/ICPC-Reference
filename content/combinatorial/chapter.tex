@@ -48,6 +48,7 @@
 			$p(n)$ & 1 & 1 & 2 & 3 & 5 & 7 & 11 & 15 & 22 & 30 & 627 & $\mathtt{\sim}$2e5 & $\mathtt{\sim}$2e8 \\
 		\end{tabular}
 		\end{center}
+		\vspace{1.5em}
 
 	\subsection{Lucas' Theorem}
 		Let $n,m$ be non-negative integers and $p$ a prime. Write $n=n_kp^k+...+n_1p+n_0$ and $m=m_kp^k+...+m_1p+m_0$. Then $\binom{n}{m} \equiv \prod_{i=0}^k\binom{n_i}{m_i} \pmod{p}$.
@@ -56,6 +57,10 @@
 	\subsection{Binomials}
 		\kactlimport{BinomialCoefficients.h}
 		\kactlimport{multinomial.h}
+		\subsubsection{Binomial Theorem}
+		The binomial theorem is a fundamental algebraic formula used to expand any binomial expression raised to a nonnegative integer power $(a+b)^n$.
+		$$(a+b)^n = \binom{n}{0}a^n b^0 + \binom{n}{1}a^{n-1}b^1 + \binom{n}{2}a^{n-2}b^2 + \dots + \binom{n}{n}a^0b^n$$
+		$$(1+x)^n = \binom{n}{0} + \binom{n}{1}x + \binom{n}{2}x^2 + \dots + \binom{n}{n}x^n$$
 
 \section{General purpose numbers}
 	\subsection{Bernoulli numbers}

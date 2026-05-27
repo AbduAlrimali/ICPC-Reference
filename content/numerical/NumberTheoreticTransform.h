@@ -11,6 +11,7 @@
    For manual convolution: NTT the inputs, multiply
    pointwise, divide by n, reverse(start+1, end), NTT back.
  * Inputs must be in [0, mod).
+ * the primitive root 62 can work with the following primes: $998244353$, $167772161$, $469762049$, $1004535809$, $1012924417$.
  * Time: O(N \log N)
  * Status: stress-tested
  */
@@ -27,7 +28,7 @@ void ntt(vl &a) {
 	static vl rt(2, 1);
 	for (static int k = 2, s = 2; k < n; k *= 2, s++) {
 		rt.resize(n);
-		ll z[] = {1, modpow(root, mod >> s)};
+		ll z[] = {1, modpow(root, mod >> s, mod)};
 		rep(i,k,2*k) rt[i] = rt[i / 2] * z[i & 1] % mod;
 	}
 	vi rev(n);
@@ -44,7 +45,7 @@ vl conv(const vl &a, const vl &b) {
 	if (a.empty() || b.empty()) return {};
 	int s = sz(a) + sz(b) - 1, B = 32 - __builtin_clz(s),
 	    n = 1 << B;
-	int inv = modpow(n, mod - 2);
+	int inv = modpow(n, mod - 2, mod);
 	vl L(a), R(b), out(n);
 	L.resize(n), R.resize(n);
 	ntt(L), ntt(R);

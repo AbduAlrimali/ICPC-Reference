@@ -32,7 +32,7 @@ struct TwoSat {
 		return N++;
 	}
 
-	void either(int f, int j) { // OR
+	void either(int f, int j) { // OR, at least one
 		f = max(2*f, -1-2*f);
 		j = max(2*j, -1-2*j);
 		gr[f].push_back(j^1);
