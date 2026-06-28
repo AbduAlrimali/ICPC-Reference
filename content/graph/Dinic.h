@@ -5,6 +5,8 @@
  * Source: https://cp-algorithms.com/graph/dinic.html
  * Description: Flow algorithm with complexity $O(VE\log U)$ where $U = \max |\text{cap}|$.
  * $O(\min(E^{1/2}, V^{2/3})E)$ if $U = 1$; $O(\sqrt{V}E)$ for bipartite matching.
+ * After running dinic.calc(), calling dinic.leftOfMinCut(node) will return true 
+ * if that node is on the Source's side of the cut, and false if it is on the Sink's side.
  * Status: Tested on SPOJ FASTFLOW and SPOJ MATCHING, stress-tested
  */
 #pragma once

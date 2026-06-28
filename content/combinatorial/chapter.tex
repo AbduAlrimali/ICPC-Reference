@@ -37,6 +37,14 @@
 	\subsection{Stars and Bars}
 		Splitting $n$ items into $k$ groups of unknown size can be represented as splitting $n$ with $k$ bars.
 		$$\binom{n+k-1}{n} = \binom{n+k-1}{k-1}$$
+	\subsection{Tiling and Non-adjacent Selection}
+		Number of ways to choose $k$ non-adjacent items from $n$ is $\binom{n-k+1}{k}$.
+		Number of ways to tile a $1 \times n$ board with $m$ dominoes ($1 \times 2$) and $n-2m$ squares ($1 \times 1$) is $\binom{n-m}{m}$.
+		For a circle of $n$ items, choosing $k$ non-adjacent items: $\frac{n}{n-k}\binom{n-k}{k}$.
+		The sum $\sum_{m=0}^{\lfloor n/2 \rfloor} \binom{n-m}{m} = F_{n+1}$ (Fibonacci).
+	\subsection{Pairing}
+		Number of ways to group $k$ (even) items into pairs:
+		$$(k-1)!! = 1 \cdot 3 \cdot 5 \dots (k-1) = \frac{k!}{(k/2)! 2^{k/2}}$$
 	\subsection{Partition function}
 		Number of ways of writing $n$ as a sum of positive integers, disregarding the order of the summands.
 		\[ p(0) = 1,\ p(n) = \sum_{k \in \mathbb Z \setminus \{0\}}{(-1)^{k+1} p(n - k(3k-1) / 2)} \]

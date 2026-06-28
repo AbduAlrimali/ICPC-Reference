@@ -7,9 +7,9 @@
 #pragma once
 
 struct BinomialCoefficients {
-	ll n, mod;
+	ll l, mod;
 	vector<ll> fact, inv, finv;
-	BinomialCoefficients(ll n, ll mod) : n(n), mod(mod), fact(n), inv(n), finv(n) {
+	BinomialCoefficients(ll n, ll mod) : l(n), mod(mod), fact(n), inv(n), finv(n) {
 		fact[0] = inv[1] = finv[0] = 1;
 		for (int i = 1; i < n; i++) {
 			fact[i] = fact[i - 1] * i % mod;
@@ -19,4 +19,4 @@ struct BinomialCoefficients {
 	}
 	ll nPr(ll n, ll r){ return (n<r||r<0) ? 0:1LL * fact[n] * finv[n-r] % mod; }
     ll nCr(ll n, ll r){ return 1LL * nPr(n, r) * finv[r] % mod; }
-};
+} bc(1e6+5, 1e9+7);

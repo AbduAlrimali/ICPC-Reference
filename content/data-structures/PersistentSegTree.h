@@ -1,7 +1,12 @@
-/*
-  persistent segment tree used to track previous changes and rollback to a certain point in time.
-  verified using: https://cses.fi/problemset/task/1737
-*/
+/**
+ * Author: Folklore
+ * Date: 2026-06-28
+ * License: CC0
+ * Source: Standard competitive programming folklore
+ * Description: persistent segment tree used to track previous changes and rollback to a certain point in time.
+ * verified using: https://cses.fi/problemset/task/1737
+ * Status: Tested
+ */
 
 #define int ll
 

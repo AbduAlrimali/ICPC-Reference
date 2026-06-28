@@ -32,6 +32,7 @@ struct Point {
 	P unit() const { return *this/dist(); } // makes dist()=1
 	P perp() const { return P(-y, x); } // rotates +90 degrees
 	P normal() const { return perp().unit(); }
+	T half() const { return y > 0 || (y == 0 && x > 0) ? 1 : 0; }
 	// returns point rotated 'a' radians ccw around the origin
 	P rotate(double a) const {
 		return P(x*cos(a)-y*sin(a),x*sin(a)+y*cos(a)); }

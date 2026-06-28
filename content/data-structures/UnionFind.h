@@ -3,7 +3,7 @@
  * Date: 2009-10-26
  * License: CC0
  * Source: folklore
- * Description: Disjoint-set data structure.
+ * Description: Disjoint-set data structure with path compression.
  * Time: $O(\alpha(N))$
  */
 #pragma once

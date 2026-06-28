@@ -93,7 +93,8 @@
 \section{Theorems}
 If $\gcd(A, B) = 1$, then $\gcd(A+B, A \cdot B) = 1$
 \subsection{Modular \& Factorial}
-	\textbf{Wilson's Theorem}: \\ $(p-1)! \equiv -1 \pmod p$ iff $p$ is prime. \\
+	\kactlimport{Legendre.h}
+	\textbf{Wilson's Theorem}: \\ $(p-1)! \equiv -1 \pmod p$ iff $p$ is prime. Any integer $n > 1$ is prime iff $(n-1)! + 1$ is divisible by $n$. \\
 	\textbf{Legendre's Formula}: \\ The exponent of prime $p$ in $n!$ is $\sum_{k=1}^{\infty} \lfloor \frac{n}{p^k} \rfloor = \frac{n - S_p(n)}{p-1}$, where $S_p(n)$ is the sum of digits of $n$ in base $p$. \\
 	\textbf{Lifting The Exponent (LTE)}: \\ If $p \mid x-y$, $p \nmid n, x, y$, then $v_p(x^n-y^n) = v_p(x-y) + v_p(n)$. If $p=2$, $v_2(x^n-y^n) = v_2(x-y) + v_2(n) + v_2(x+y) - 1$ for even $n$. \\
 \subsection{Sums of Squares}

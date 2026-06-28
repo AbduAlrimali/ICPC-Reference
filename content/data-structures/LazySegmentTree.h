@@ -12,7 +12,7 @@ struct LazySegTree {
     int n;
     vector<T> tree;
     vector<int> lazy;
-    LazySegTree(const vector<T> &a) : n(a.size()), tree(4 * n), lazy(4 * n, 1) {
+    LazySegTree(const vector<T> &a) : n(a.size()), tree(4 * n), lazy(4 * n) {
         build(1, 0, n - 1, a);
     }
     T f(T a, T b) { return a + b; } // (associative fn)
@@ -27,14 +27,14 @@ struct LazySegTree {
         }
     }
     void apply(int v, int len, int x) {
-        tree[v] *= x;
-        lazy[v] *= x;
+        tree[v] += x*len;
+        lazy[v] += x;
     }
     void push(int v, int l, int r) {
         int m = (l + r) / 2;
         apply(2 * v, m - l + 1, lazy[v]);
         apply(2 * v + 1, r - m, lazy[v]);
-        lazy[v] = 1;
+        lazy[v] = 0;
     }
     void update(int ql, int qr, int x, int v, int l, int r) {
         if (qr < l || ql > r) return;
