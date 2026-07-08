@@ -21,15 +21,19 @@ Points on the edge of the hull between two other points are not considered part 
 #include "Point.h"
 
 typedef Point<ll> P;
-vector<P> convexHull(vector<P> pts) {
-	if (sz(pts) <= 1) return pts;
-	sort(all(pts));
-	vector<P> h(sz(pts)+1);
-	int s = 0, t = 0;
-	for (int it = 2; it--; s = --t, reverse(all(pts)))
-		for (P p : pts) {
-			while (t >= s + 2 && h[t-2].cross(h[t-1], p) <= 0) t--;
-			h[t++] = p;
-		}
-	return {h.begin(), h.begin() + t - (t == 2 && h[0] == h[1])};
+vector<P> convexHull(vector<P>& pts, bool include_collinear = false) {
+    if (pts.size() <= 1) return pts;
+    sort(pts.begin(), pts.end());
+    pts.erase(unique(pts.begin(), pts.end()), pts.end());
+    vector<P> h(pts.size() * 2);
+    int s = 0, t = 0;
+    for (int it = 2; it--; s = --t, reverse(pts.begin(), pts.end())) {
+        for (auto& p : pts) {
+            while (t >= s + 2 && (include_collinear ? 
+                   h[t-2].cross(h[t-1], p) < 0 : 
+                   h[t-2].cross(h[t-1], p) <= 0)) t--;
+            h[t++] = p;
+        }
+    }
+    return {h.begin(), h.begin() + t - (t > 1 && h[0] == h[t-1])};
 }

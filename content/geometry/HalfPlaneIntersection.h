@@ -4,6 +4,8 @@
  * License: CC0
  * Description: Half-plane intersection. Each line (s, e) represents the half-plane to the left of s->e.
  * Returns vertices of the intersection polygon in CCW order.
+ * The template assumes the region is perfectly closed, if not, you should 
+ * artificially close the universe by pushing four massive half-planes representing a bounding box.
  * Time: O(N \log N)
  * Status: tested
  */
