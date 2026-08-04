@@ -29,9 +29,16 @@ struct Point {
 	double dist() const { return sqrt((double)dist2()); }
 	// angle to x-axis in interval [-pi, pi]
 	double angle() const { return atan2(y, x); }
+	// calculates the smallest unsigned angle of ABC (*this is B)
+    // returns a value in the interval [0, pi]
+    double angle(P A, P C) const {
+        P ba = A - *this;
+        P bc = C - *this;
+        return abs(atan2((double)ba.cross(bc), (double)ba.dot(bc)));
+    }
 	// from polar: P(r*cos(a), r*sin(a))
 	P unit() const { return *this/dist(); } // makes dist()=1
-	P perp() const { return P(-y, x); } // rotates +90 degrees
+	P perp() const { return P(-y, x); } // rotates +90 degrees ccw
 	P normal() const { return perp().unit(); }
 	T half() const { return y > 0 || (y == 0 && x > 0) ? 1 : 0; }
 	// returns point rotated 'a' radians ccw around the origin

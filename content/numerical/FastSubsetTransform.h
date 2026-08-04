@@ -11,18 +11,19 @@
  */
 #pragma once
 
-typedef vector<ll> vl;
-typedef pair<ll, ll> pll;
+#define int128 __int128_t
+typedef vector<int128> vl;
+typedef pair<int128, int128> pll;
 void FST(vl& a, bool inv) {
 	for (int n = sz(a), step = 1; step < n; step *= 2) {
 		for (int i = 0; i < n; i += 2 * step) rep(j,i,i+step) {
-			ll &u = a[j], &v = a[j + step]; tie(u, v) =
+			int128 &u = a[j], &v = a[j + step]; tie(u, v) =
 				// inv ? pll(v - u, u) : pll(v, u + v); // AND
 				// inv ? pll(v, u - v) : pll(u + v, u); // OR /// include-line
 				pll(u + v, u - v);                   // XOR /// include-line
 		}
 	}
-	if (inv) for (ll& x : a) x /= sz(a); // XOR only /// include-line
+	if (inv) for (int128& x : a) x /= sz(a); // XOR only /// include-line
 }
 
 vl conv(vl a, vl b) {

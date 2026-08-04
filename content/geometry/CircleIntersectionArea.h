@@ -13,7 +13,7 @@ double circleIntersectionArea(Point<double> c1, double r1, Point<double> c2, dou
 	if (r1 + r2 <= d) return 0;
 	if (d <= abs(r1 - r2)) {
 		double r = min(r1, r2);
-		return M_PI * r * r;
+		return PI * r * r;
 	}
 	auto sectorArea = [](double r, double otherR, double d) {
 		double phi = 2 * acos((r * r + d * d - otherR * otherR) / (2 * r * d));

@@ -15,6 +15,7 @@
 ll k, ans=0;
 const int N = 2e5+5;
 int sz[N], rem[N], cnt[N];
+int cent_par[N]; // Stores the parent of each node in the Centroid Tree
 vector<int> adj[N];
 
 int get_sz(int u, int p){ // get size of subtree of u
@@ -44,7 +45,7 @@ void get_ans(int u, int p, int dep){
         get_ans(v, u, dep+1);
     }
 }
-void decomp(int u){
+void decomp(int u, int p = -1){
     int comp_sz = get_sz(u, -1);
     int cent = get_centroid(u, -1, comp_sz);
     // get ans through current centroid
@@ -55,10 +56,12 @@ void decomp(int u){
         dfs_add(v, cent, 1, 1);
     }
     memset(cnt, 0, comp_sz*sizeof(int));
+    // Save the centroid tree structure
+    cent_par[cent] = p;
     // remove centroid and decompose
     rem[cent]=1;
     for(int v:adj[cent]){
         if(rem[v]) continue;
-        decomp(v);
+        decomp(v, cent);
     }
 }

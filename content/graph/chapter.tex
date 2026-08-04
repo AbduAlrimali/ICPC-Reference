@@ -38,11 +38,15 @@
 \section{Trees}
 	\kactlimport{BinaryLifting.h}
 	\kactlimport{LCA.h}
+	\kactlimport{LCAForest.h}
 	\kactlimport{CompressTree.h}
 	\kactlimport{HLD.h}
+	\kactlimport{HLD2.h}
 	\kactlimport{CentroidDecomposition.h}
+	\kactlimport{DominatorTree.h}
 	\kactlimport{LinkCutTree.h}
 	\kactlimport{DirectedMST.h}
+	\kactlimport{TreeIsomorphism.h}
 
 \section{Math}
 	\subsection{Number of Spanning Trees}
@@ -69,3 +73,11 @@
 			\item Complexity: $O(N \log N)$ to sort, $O(N)$ to check.
 			\item Useful for problems involving chordal graphs (split $\subset$ chordal).
 		\end{itemize}
+
+	\subsection{Planar Graph Girth}
+		Any simple planar graph with minimum degree $\ge 3$ has girth $g \le 5$.
+		If it has no $C_3$ (triangles) or $C_4$ (4-cycles), the girth is exactly 5.
+		By orienting undirected edges from lower degree to higher degree (breaking ties arbitrarily), the out-degree of any vertex in the directed graph is bounded by 5.
+		$C_3$ and $C_4$ can then be verified in $O(V)$ time.
+		\kactlimport{PlanarGirth.h}
+
